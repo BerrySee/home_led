@@ -11,13 +11,3 @@ services:
       - ./api:/usr/src/app/api
       - /usr/src/app/api/node_modules
     privileged: true
-  home_led_ui:
-    build:
-      context: ./app
-      dockerfile: Dockerfile-dev
-    ports:
-      - "8080:8080"
-    container_name: home_led_ui
-    volumes:
-      - ./app:/usr/src/app/home_led_app
-      - /usr/src/app/home_led_app/node_modules

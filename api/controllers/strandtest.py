@@ -10,7 +10,7 @@ from rpi_ws281x import *
 import argparse
 
 # LED strip configuration:
-LED_COUNT      = 30      # Number of LED pixels.
+LED_COUNT      = 330      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
 #LED_PIN        = 10      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
@@ -22,7 +22,7 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 
 # Define functions which animate LEDs in various ways.
-def colorWipe(strip, color, wait_ms=50):
+def colorWipe(strip, color, wait_ms=0):
     """Wipe color across display a pixel at a time."""
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color)
@@ -98,17 +98,17 @@ if __name__ == '__main__':
 
         while True:
             print ('Color wipe animations.')
-            colorWipe(strip, Color(255, 0, 0))  # Red wipe
+            #colorWipe(strip, Color(255, 0, 0))  # Red wipe
             colorWipe(strip, Color(0, 255, 0))  # Blue wipe
-            colorWipe(strip, Color(0, 0, 255))  # Green wipe
-            print ('Theater chase animations.')
-            theaterChase(strip, Color(127, 127, 127))  # White theater chase
-            theaterChase(strip, Color(127,   0,   0))  # Red theater chase
-            theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
-            print ('Rainbow animations.')
-            rainbow(strip)
-            rainbowCycle(strip)
-            theaterChaseRainbow(strip)
+            #colorWipe(strip, Color(0, 0, 255))  # Green wipe
+            #print ('Theater chase animations.')
+            #theaterChase(strip, Color(127, 127, 127))  # White theater chase
+            #theaterChase(strip, Color(127,   0,   0))  # Red theater chase
+            #theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
+            #print ('Rainbow animations.')
+            #rainbow(strip)
+            #rainbowCycle(strip)
+            #theaterChaseRainbow(strip)
 
     except KeyboardInterrupt:
         if args.clear:

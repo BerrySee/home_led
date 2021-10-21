@@ -36,13 +36,15 @@ io.on('connection', function (socket) {
 
   // io.emit('ledResponse', false);
   let options = {};
-  socket.on('setColor', color => {
+  socket.on('setColor', payload => {
     io.emit('ledResponse', true);
-    options.args = color;
-    PythonShell.run('./controllers/setColor.py', options, function (err, results) {
+    options.args = payload;
+    console.log(payload);
+    console.log(options.args, "argumentumok");
+    PythonShell.run('./controllers/controller.py', options, function (err, results) {
       console.log(results, err)
       if (results) {
-        console.log('van result!!');
+        console.log('van result!!', results);
         io.emit('ledResponse', false);
       }
 
@@ -51,7 +53,7 @@ io.on('connection', function (socket) {
       console.log(results[0]);
       let colorResult = results[0].split(" ");
       console.log(colorResult);
-      let data = JSON.stringify({ "color": [colorResult[0], colorResult[1], colorResult[2]] });
+      let data = JSON.stringify({ "color": [colorResult[0], colorResult[1], colorResult[2]], 'isTurnOn': colorResult[3] });
       fs.writeFileSync('color.json', data);
       let afterSet = fs.readFileSync('color.json');
       let currentColor = JSON.parse(afterSet);

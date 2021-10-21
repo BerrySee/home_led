@@ -1,8 +1,13 @@
 FROM node:10
 
-RUN apt-get update && apt-get install python -y
+RUN apt-get update && apt-get install python3 -y
+RUN apt-get install python -y
+RUN apt-get install python-pip -y
 RUN apt-get install python3-pip -y
-RUN pip install rpi-ws281x
+RUN pip3 install rpi-ws281x
+RUN pip3 install setuptools_scm
+RUN pip3 install adafruit-circuitpython-neopixel
+RUN pip3 install RPi.GPIO
 
 WORKDIR /usr/src/app/api
 

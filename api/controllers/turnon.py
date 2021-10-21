@@ -21,28 +21,18 @@ green = int(sys.argv[2])
 blue = int(sys.argv[3])
 colorCode = [red, green, blue]
 colorCode.sort()
-for i in range(LED_NUM):
-	#pixels[i] = (30, 0, 30)
-	print(i)
-	#if i > 5:
-	pixels[i-10] = (0, 0, 0)
-
-	pixels[i-9] = (5, 0, 5)
-	
-	pixels[i-8] = (10, 0, 10)
-	
-	pixels[i-7] = (15, 0, 15)
-	
-	pixels[i-6] = (20, 0, 20)
-	
-	pixels[i-5] = (40, 0, 40)
-	
-	pixels[i-4] = (60, 0, 60)
-	
-	pixels[i-3] = (80, 0, 80)
-
-	pixels[i-2] = (100, 0, 100)
-
-	pixels[i-1] = (150, 0, 150)
-	
+print(colorCode[-1])
+counterUp = 100
+counterDown = 50
+pixels.brightness = 0
+colorNum = 1
+pixels.fill((red, green, blue))
 # Loop forever and blink the color
+for i in range(counterUp):
+    lele = pixels.brightness
+    brightness = 1/counterUp
+    if i != 0:
+        pixels.brightness += brightness
+    time.sleep(0.00005)
+    
+
