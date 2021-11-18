@@ -1,22 +1,11 @@
 version: "3"
 services:
-  home_led_server:
-    build:
-      context: ./api
-      dockerfile: Dockerfile-dev
-    ports:
-      - "3080:3080"
-    container_name: home_led_server
-    volumes:
-      - ./api:/usr/src/app/api
-      - /usr/src/app/api/node_modules
-    privileged: true
   home_led_ui:
     build:
       context: ./app
       dockerfile: Dockerfile-dev
     ports:
-      - "8080:8080"
+      - "8384:8080"
     container_name: home_led_ui
     volumes:
       - ./app:/usr/src/app/home_led_app
